@@ -1,4 +1,5 @@
 let timer = 0;
+clicked = false;
 
 function setup() {
   // For ordering nodes in the DOM
@@ -9,9 +10,21 @@ function setup() {
 
 function draw() {
 
+//BEACH BACKGROUND
 drawbeachBackground(300,400);
 
+//BUCKET AND SHOVEL
+drawbucketShovel(300,400);
+
+
+  drawsandCastle(300,400);
+
+
+
 }
+
+
+
 
 function drawbeachBackground(beachBackgroundX,beachBackgroundY){
   push();
@@ -47,10 +60,82 @@ function drawbeachBackground(beachBackgroundX,beachBackgroundY){
     beachWaterG = beachWaterG + 125 * (1/50);
     beachWaterB = beachWaterB - 34 * (1/50);
   }
-  
 
   //BEACH SAND
-  fill(231,196,150);   //Sand Color
+  fill(249, 188, 76);   //Sand Color
   rect(-300,-175,width,height);
   pop();
 }
+
+function drawsandCastle(sandCastleX,sandCastleY){
+  push();
+translate(sandCastleX,sandCastleY);
+noStroke();
+
+//TOWER BASE
+fill(214, 163, 68);   //Darker sand color
+fill(203, 153, 61);
+fill(175, 132, 52);
+quad(-251,-60,-211,-60,-200,-10,-263,-10);
+quad(-254,-70,-207,-70,-211,-60,-251,-60);
+
+//TOWER BATTLEMENTS
+rect(-254,-80,47,10);
+rect(-254,-90,10);
+rect(-235.5,-90,10);
+rect(-217,-90,10);
+
+//SAND CASTLE BASE
+fill(233, 175, 69);   //Dark sand color
+fill(203, 153, 61);
+rect(-280,-40,100,35);
+
+//BASE BATTLEMENTS
+rect(-280,-50,15)
+rect(-252,-50,15);
+rect(-225,-50,15);
+rect(-195,-50,15);
+
+//SAND CASTLE DOOR
+fill(175, 132, 52);   //Darker sand color
+arc(-230,-5,20,50,PI,0);
+
+
+
+pop();
+}
+
+
+function drawbucketShovel(bucketX,bucketY){
+push();
+translate(bucketX,bucketY);
+noStroke();
+
+//BUCKET
+fill(255,0,0);   //Red
+rect(-213,-80,46,40)
+arc(-190,-40,46,10,0,PI);
+
+
+fill(20,160,250);   //Blue
+rect(-216,-80,52,7,2)
+
+stroke(13, 105, 162);
+strokeWeight(5);
+noFill();
+curve(-170,-100,-186,-77,-166,-56,-140,-86);
+
+//SHOVEL
+strokeWeight(1);
+noStroke();
+fill(240, 217, 7);   //Yellow
+rect(-153,-70,5,25);
+arc(-150,-30,22,40,PI,0);
+fill(211, 190, 6);
+fill(240, 217, 7);
+fill(211, 190, 6);
+arc(-150,-30,15,30,PI,0);
+
+pop();
+}
+
