@@ -1,12 +1,12 @@
 let timer = 0;
 let clickedBucket = false;
 let clickedBeachBag = false;
+let sharkFinX = -50;
 
 function setup() {
   // For ordering nodes in the DOM
   let myCanvas = createCanvas(600,400);
   myCanvas.parent("canvas-parent");
-  
 }
 
 function draw() {
@@ -36,6 +36,16 @@ drawbeachCloud(50,110,.75);
 drawbeachCloud(400,90,.8);
 drawbeachCloud(590,150)
 
+if (sharkFinX < 700){
+  sharkFinX = sharkFinX + 1
+}
+
+if (sharkFinX == 699){
+  sharkFinX = -50
+}
+
+//SHARK FIN
+drawsharkFin(sharkFinX,170);
 
 
 }
@@ -219,6 +229,18 @@ function drawbeachCloud(beachCloudX,beachCloudY,beachCloudS){
   ellipse(-35,-80,50);
   ellipse(-40,-55,50);
   ellipse(-65,-70,40);
+  pop();
+}
+
+function drawsharkFin(sharkFinX,sharkFinY){
+  push();
+  translate(sharkFinX,sharkFinY);
+  //FIN
+  fill(150,183,192);
+  triangle(0,-20,15,0,0,0);
+  strokeWeight(1);
+  stroke(0);
+  line(-3,0,15,0);
   pop();
 }
 
