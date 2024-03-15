@@ -30,6 +30,14 @@ if (clickedBeachBag == true){
 drawbeachTowel(250,360);
 }
 
+//CLOUDS
+drawbeachCloud(200,50);
+drawbeachCloud(50,110,.75);
+drawbeachCloud(400,90,.8);
+drawbeachCloud(590,150)
+
+
+
 }
 
 function mouseClicked(){
@@ -196,5 +204,21 @@ rect(-7,-120,14,120);
 rect(21,-120,14,120);
 
 pop();
+}
+
+function drawbeachCloud(beachCloudX,beachCloudY,beachCloudS){
+  push();
+  translate(beachCloudX,beachCloudY)
+  scale(beachCloudS)
+  noStroke();
+  ellipse(0,-50,55);
+  ellipse(40,-55,50);
+  ellipse(70,-65,50);
+  ellipse(40,-80,50);
+  ellipse(0,-90,50);
+  ellipse(-35,-80,50);
+  ellipse(-40,-55,50);
+  ellipse(-65,-70,40);
+  pop();
 }
 
