@@ -1,11 +1,12 @@
 let timer = 0;
-clicked = false;
+let clickedBucket = false;
+let clickedBeachBag = false;
 
 function setup() {
   // For ordering nodes in the DOM
   let myCanvas = createCanvas(600,400);
   myCanvas.parent("canvas-parent");
-  noLoop();
+  
 }
 
 function draw() {
@@ -16,15 +17,27 @@ drawbeachBackground(300,400);
 //BUCKET AND SHOVEL
 drawbucketShovel(300,400);
 
+//CLICKED BUCKET TO MAKE SAND CASTLE
+if (clickedBucket == true){
+drawsandCastle(300,400);
+}
 
-  drawsandCastle(300,400);
+//BEACH BAG
+drawbeachBag(340,300);
 
-
+//CLICK BEACH BAG TO DRAW BEACH TOWEL
+if (clickedBeachBag == true){
+drawbeachTowel(250,360);
+}
 
 }
 
-
-
+function mouseClicked(){
+  if (mouseX>80 && mouseX<171 && mouseY>317 && mouseY<367)
+  clickedBucket = !clickedBucket
+else if (mouseX>250 && mouseX<392 && mouseY>248 && mouseY<302)
+clickedBeachBag = !clickedBeachBag
+}
 
 function drawbeachBackground(beachBackgroundX,beachBackgroundY){
   push();
@@ -116,10 +129,11 @@ fill(255,0,0);   //Red
 rect(-213,-80,46,40)
 arc(-190,-40,46,10,0,PI);
 
-
+//BUCKET RIM
 fill(20,160,250);   //Blue
 rect(-216,-80,52,7,2)
 
+//BUCKET HANDLE
 stroke(13, 105, 162);
 strokeWeight(5);
 noFill();
@@ -135,6 +149,51 @@ fill(211, 190, 6);
 fill(240, 217, 7);
 fill(211, 190, 6);
 arc(-150,-30,15,30,PI,0);
+
+pop();
+}
+
+function drawbeachBag(beachBagX,beachBagY){
+push();
+translate(beachBagX,beachBagY);
+strokeWeight(1);
+//BAG
+fill(30,120,50)
+quad(-50,-50,50,-50,40,0,-40,0);
+
+//BAG HANDLE
+strokeWeight(4);
+stroke(0);
+beginShape();
+curveVertex(-30,-50);
+curveVertex(-30,-48.5);
+
+curveVertex(-15,-30);
+curveVertex(-10,-25);
+curveVertex(10,-25);
+curveVertex(15,-30);
+
+curveVertex(30,-48.5);
+curveVertex(30,-50);
+endShape();
+pop();
+}
+
+function drawbeachTowel(beachTowelX,beachTowelY){
+push();
+translate(beachTowelX,beachTowelY);
+//BEACH TOWEL
+noStroke();
+fill(255);
+rect(-35,-120,70,120);
+
+//BEACH TOWEL STRIPES
+fill(137,207,240);
+rect(-35,-120,14,120);
+
+rect(-7,-120,14,120);
+
+rect(21,-120,14,120);
 
 pop();
 }
