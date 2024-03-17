@@ -331,6 +331,8 @@ drawArrow(80,290);
 
 }
 
+// --- underWaterScene code ---
+
 function drawBlueBackground (x, y) {
  
   push()
@@ -364,6 +366,28 @@ function drawBubbles (x, y, scaleBubbles) {
   fill(255, 255, 255, 50)
   noStroke()
   ellipse(0, 0, 30)
+  
+  pop()
+  
+}
+
+function drawClosedTreasureChest (x, y) {
+  
+  push()
+  translate(x, y)
+  
+  fill(92, 64, 51)
+  strokeWeight(10)
+  stroke(255,215,0)
+  rect(100, 320, 100, 70)
+  
+  fill(92, 64, 51)
+  strokeWeight(10)
+  stroke(255,215,0) 
+  arc(150, 320, 100, 70, PI, 2*PI)
+  
+  fill(255,215,0)
+  rect(145, 315, 10, 20)
   
   pop()
   
