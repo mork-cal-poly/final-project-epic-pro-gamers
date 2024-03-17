@@ -14,6 +14,8 @@ function draw() {
 
 beachScene();
 
+underWaterScene()
+
 }
 
 function mouseClicked(){
