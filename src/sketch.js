@@ -12,65 +12,23 @@ function setup() {
 
 function draw() {
 
-//BEACH BACKGROUND
-drawbeachBackground(300,400);
-
-//BUCKET AND SHOVEL
-drawbucketShovel(300,400);
-
-//CLICKED BUCKET TO MAKE SAND CASTLE
-if (clickedBucket == true){
-drawsandCastle(300,400);
-}
-
-//BEACH BAG
-drawbeachBag(340,300);
-
-//CLICK BEACH BAG TO DRAW BEACH TOWEL
-if (clickedBeachBag == true){
-drawbeachTowel(250,360);
-}
-
-//CLOUDS
-drawbeachCloud(200,50);
-drawbeachCloud(50,110,.75);
-drawbeachCloud(400,90,.8);
-drawbeachCloud(590,150)
-
-if (sharkFinX < 700){
-  sharkFinX = sharkFinX + 1
-}
-
-if (sharkFinX == 699){
-  sharkFinX = -50
-}
-
-//SHARK FIN
-drawsharkFin(sharkFinX,170);
-
-//BEACH UMBRELLA CLOSED
-if (clickedUmbrella == false){
-drawbeachUmbrellaClosed(450,350);
-}
-
-//BEACH UMBRELLA OPEN
-if (clickedUmbrella == true){
-drawbeachUmbrellaOpen(450,350);
-}
-
-
-
+beachScene();
 
 }
 
 function mouseClicked(){
-  if (mouseX>80 && mouseX<171 && mouseY>317 && mouseY<367)
+  if (mouseX>80 && mouseX<171 && mouseY>317 && mouseY<367 && beachScene)
   clickedBucket = !clickedBucket
-else if (mouseX>250 && mouseX<392 && mouseY>248 && mouseY<302)
+else if (mouseX>250 && mouseX<392 && mouseY>248 && mouseY<302 && beachScene)
 clickedBeachBag = !clickedBeachBag
-else if (mouseX>436 && mouseX<462 && mouseY>166 && mouseY<323)
+else if (mouseX>436 && mouseX<462 && mouseY>166 && mouseY<323 && beachScene)
 clickedUmbrella = !clickedUmbrella
+else if (mouseX>27 && mouseX<100 && mouseY>250 && mouseY<290 && beachScene)
+dockScene();
+else if (mouseX>0 && mouseX<600 && mouseY>150 && mouseY<225 && beachScene)
+underwaterScene();
 }
+
 
 function drawbeachBackground(beachBackgroundX,beachBackgroundY){
   push();
@@ -287,5 +245,69 @@ function drawbeachUmbrellaClosed(beachUmbrellaClosedX,beachUmbrellaClosedY){
   fill(255);   //WHITE
   triangle(0,-180,4,-78,-4,-82);
   pop();
+}
+
+function drawArrow(ArrowX,ArrowY){
+  push();
+  translate(ArrowX,ArrowY);
+  fill(255,0,0);
+  noStroke();
+  rect(-30,-30,50,20);
+  triangle(-50,-20,-30,-40,-30,0)
+  pop();
+}
+
+function beachScene(){
+ 
+//BEACH BACKGROUND
+drawbeachBackground(300,400);
+
+//BUCKET AND SHOVEL
+drawbucketShovel(300,400);
+
+//CLICKED BUCKET TO MAKE SAND CASTLE
+if (clickedBucket == true){
+drawsandCastle(300,400);
+}
+
+//BEACH BAG
+drawbeachBag(340,300);
+
+//CLICK BEACH BAG TO DRAW BEACH TOWEL
+if (clickedBeachBag == true){
+drawbeachTowel(240,360);
+}
+
+//CLOUDS
+drawbeachCloud(200,50);
+drawbeachCloud(50,110,.75);
+drawbeachCloud(400,90,.8);
+drawbeachCloud(590,150)
+
+if (sharkFinX < 700){
+  sharkFinX = sharkFinX + 1
+}
+
+if (sharkFinX == 699){
+  sharkFinX = -50
+}
+
+//SHARK FIN
+drawsharkFin(sharkFinX,170);
+
+//BEACH UMBRELLA CLOSED
+if (clickedUmbrella == false){
+drawbeachUmbrellaClosed(450,350);
+}
+
+//BEACH UMBRELLA OPEN
+if (clickedUmbrella == true){
+drawbeachUmbrellaOpen(450,350);
+}
+
+//ARROW TO DOCKS SCENE
+drawArrow(80,290);
+
+
 }
 
