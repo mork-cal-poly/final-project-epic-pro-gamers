@@ -19,6 +19,9 @@ underWaterScene()
 }
 
 function mouseClicked(){
+
+// beachScene
+
   if (mouseX>80 && mouseX<171 && mouseY>317 && mouseY<367 && beachScene)
   clickedBucket = !clickedBucket
 else if (mouseX>250 && mouseX<392 && mouseY>248 && mouseY<302 && beachScene)
@@ -29,6 +32,21 @@ else if (mouseX>27 && mouseX<100 && mouseY>250 && mouseY<290 && beachScene)
 dockScene();
 else if (mouseX>0 && mouseX<600 && mouseY>150 && mouseY<225 && beachScene)
 underwaterScene();
+
+// underWaterScene
+
+if (mouseX > 475 && mouseX < 590 && mouseY > 280 && mouseY < 400)
+clickedTreasureChest = !clickedTreasureChest;      
+
+if (mouseX > 100 && mouseX < 280 && mouseY > 60 && mouseY < 180)
+clickedFishOne = !clickedFishOne
+
+if (mouseX > 250 && mouseX < 360 && mouseY > 210 && mouseY < 280)
+clickedFishTwo = !clickedFishTwo
+
+if (mouseX > 420 && mouseX < 555 && mouseY > 60 && mouseY < 180)
+clickedFishThree = !clickedFishThree
+
 }
 
 
