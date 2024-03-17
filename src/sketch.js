@@ -331,3 +331,25 @@ drawArrow(80,290);
 
 }
 
+function drawBlueBackground (x, y) {
+ 
+  push()
+  translate(x, y)
+  
+  let r = 173
+  let g = 216
+  let b = 230
+  
+  for(y=0; y<=height; y+=1) {
+  fill(r, g, b)
+  noStroke()
+  rect(0, y, width, 1)
+  
+  r = r - 173 / (height/1)
+  g = g - 216 / (height/1)
+  b = b + 9 / (height/1)
+  } 
+ 
+  pop()   
+    
+}
