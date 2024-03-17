@@ -2,6 +2,7 @@ let timer = 0;
 let clickedBucket = false;
 let clickedBeachBag = false;
 let sharkFinX = -50;
+let clickedUmbrella = false;
 
 function setup() {
   // For ordering nodes in the DOM
@@ -47,6 +48,18 @@ if (sharkFinX == 699){
 //SHARK FIN
 drawsharkFin(sharkFinX,170);
 
+//BEACH UMBRELLA CLOSED
+if (clickedUmbrella == false){
+drawbeachUmbrellaClosed(450,350);
+}
+
+//BEACH UMBRELLA OPEN
+if (clickedUmbrella == true){
+drawbeachUmbrellaOpen(450,350);
+}
+
+
+
 
 }
 
@@ -55,6 +68,8 @@ function mouseClicked(){
   clickedBucket = !clickedBucket
 else if (mouseX>250 && mouseX<392 && mouseY>248 && mouseY<302)
 clickedBeachBag = !clickedBeachBag
+else if (mouseX>436 && mouseX<462 && mouseY>166 && mouseY<323)
+clickedUmbrella = !clickedUmbrella
 }
 
 function drawbeachBackground(beachBackgroundX,beachBackgroundY){
@@ -135,7 +150,6 @@ arc(-230,-5,20,50,PI,0);
 
 pop();
 }
-
 
 function drawbucketShovel(bucketX,bucketY){
 push();
@@ -241,6 +255,31 @@ function drawsharkFin(sharkFinX,sharkFinY){
   strokeWeight(1);
   stroke(0);
   line(-3,0,15,0);
+  pop();
+}
+
+function drawbeachUmbrellaOpen(beachUmbrellaX,beachUmbrellaY){
+push();
+translate(beachUmbrellaX,beachUmbrellaY);
+fill(255);   //WHITE
+rect(-3,-150,6,120);
+fill(255,0,0);   //RED
+arc(0,-140,150,80,PI,0);
+fill(255);
+arc(0,-140,75,80,PI,3*PI/2);
+arc(0,-140,75,80,3*PI/2,0);
+pop();
+}
+
+function drawbeachUmbrellaClosed(beachUmbrellaClosedX,beachUmbrellaClosedY){
+  push();
+  translate(beachUmbrellaClosedX,beachUmbrellaClosedY);
+  fill(255);   //WHITE
+  rect(-3,-150,6,120);
+  fill(255,0,0);   //RED
+  triangle(0,-180,10,-75,-10,-85);
+  fill(255);   //WHITE
+  triangle(0,-180,4,-78,-4,-82);
   pop();
 }
 
