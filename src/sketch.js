@@ -392,3 +392,65 @@ function drawClosedTreasureChest (x, y) {
   pop()
   
 }
+
+function drawOpenTreasureChest (x, y) {
+  
+  push()
+  translate(x, y)
+  
+  fill(92, 64, 51)
+  strokeWeight(10)
+  stroke(255,215,0)
+  rect(100, 325, 100, 70)
+  
+  fill(92, 64, 51)
+  strokeWeight(10)
+  stroke(255,215,0) 
+  arc(150, 280, 100, 70, 2*PI, PI)
+  
+  fill(255,215,0)
+  rect(145, 315, 10, 20)
+  
+  fill(255, 255, 0)
+  strokeWeight(3)
+  stroke(255, 215, 0)
+  ellipse(50, 390, 15)
+  
+  fill(255, 255, 0)
+  strokeWeight(3)
+  stroke(255, 215, 0)
+  ellipse(60, 390, 15) 
+  
+  fill(255, 255, 0)
+  strokeWeight(3)
+  stroke(255, 215, 0)
+  ellipse(80, 390, 15)
+  
+  fill(255, 255, 0)
+  strokeWeight(3)
+  stroke(255, 215, 0)
+  ellipse(100, 390, 15)
+  
+  fill(255, 255, 0)
+  strokeWeight(3)
+  stroke(255, 215, 0)
+  ellipse(140, 390, 15)
+  
+  fill(255, 255, 0)
+  strokeWeight(3)
+  stroke(255, 215, 0)
+  ellipse(150, 390, 15)
+  
+  fill(255, 255, 0)
+  strokeWeight(3)
+  stroke(255, 215, 0)
+  ellipse(170, 390, 15)
+  
+  fill(255, 255, 0)
+  strokeWeight(3)
+  stroke(255, 215, 0)
+  ellipse(200, 390, 15)
+  
+  pop()
+  
+}
