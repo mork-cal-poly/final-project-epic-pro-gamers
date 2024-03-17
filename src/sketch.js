@@ -519,3 +519,36 @@ function drawFish (x, y, scaleFish, rotateFish) {
    pop();
   
 }
+
+function printBubbles () {
+
+// --- LOOPS FOR BUBBLES ---
+  
+randomSeed(101)
+  
+// Upper left corner
+
+for (let i=0; i < 5; i ++) {
+  drawBubbles(random(0, width/2), random(0,height/2), random(0.8, 1))
+}
+
+// Upper right corner
+
+for (let i=0; i < 5; i++)  {
+  drawBubbles(random(width/2, width), random(0,height/2), random(0.8, 1))
+}
+
+// Lower left corner
+
+for (let i=0; i < 5; i ++) {
+drawBubbles(random(0,width/2),random(height/2,height), random(0.8, 1))
+}
+
+
+// Lower right corner
+
+for (let i=0; i < 10; i ++) {
+drawBubbles(random(width/2, width), random(height/2, height), random(0.8, 1)) 
+}
+
+}
