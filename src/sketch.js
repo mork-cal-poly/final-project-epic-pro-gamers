@@ -188,14 +188,19 @@ pop();
 function drawbeachBag(beachBagX,beachBagY){
 push();
 translate(beachBagX,beachBagY);
-strokeWeight(1);
+strokeWeight(1.5);
+
 //BAG
-fill(30,120,50)
+fill(100);
+stroke(48, 43, 32);   //DARK BROWN
+ellipse(0,-50,100,10);
+fill(136, 122, 91);   //LIGHT BROWN
 quad(-50,-50,50,-50,40,0,-40,0);
 
 //BAG HANDLE
+noFill();
 strokeWeight(4);
-stroke(0);
+stroke(48, 43, 32);   //DARK BROWN
 beginShape();
 curveVertex(-30,-50);
 curveVertex(-30,-48.5);
@@ -208,6 +213,7 @@ curveVertex(15,-30);
 curveVertex(30,-48.5);
 curveVertex(30,-50);
 endShape();
+
 pop();
 }
 
