@@ -566,3 +566,28 @@ function changeStateTreasureChest () {
   }
   
 }
+
+function printFish () {
+  
+  // --- FISH ---
+  
+  drawFish (xPositionFishOne, 180, 0.5, 0)
+  
+  if (clickedFishOne) {
+    xPositionFishOne = xPositionFishOne + 1
+  }
+  
+  drawFish (xPositionFishTwo, yPositionFishTwo, 0.3, 0)
+  
+  if (clickedFishTwo) {
+    xPositionFishTwo = xPositionFishTwo + 1
+    yPositionFishTwo = yPositionFishTwo - 1
+  }
+  
+  drawFish (500, 175, 0.4, rotateFish)
+  
+  if (clickedFishThree) {
+    rotateFish = rotateFish + 0.2
+  }
+  
+}
