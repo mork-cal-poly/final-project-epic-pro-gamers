@@ -353,3 +353,18 @@ function drawBlueBackground (x, y) {
   pop()   
     
 }
+
+function drawBubbles (x, y, scaleBubbles) {
+  
+  push()
+  
+  translate(x, y)
+  scale(scaleBubbles)
+  
+  fill(255, 255, 255, 50)
+  noStroke()
+  ellipse(0, 0, 30)
+  
+  pop()
+  
+}
