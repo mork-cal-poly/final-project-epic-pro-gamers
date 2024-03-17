@@ -591,3 +591,20 @@ function printFish () {
   }
   
 }
+
+function underWaterScene(){
+ 
+  // Ocean Background
+  drawBlueBackground (0, 0)
+  
+  // Fish
+  printFish()
+  
+  // Bubbles
+  printBubbles()
+  
+  // Treasure Chest
+  changeStateTreasureChest ()
+  
+  }
+  
