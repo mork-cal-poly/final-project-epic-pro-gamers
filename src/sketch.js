@@ -552,3 +552,17 @@ drawBubbles(random(width/2, width), random(height/2, height), random(0.8, 1))
 }
 
 }
+
+function changeStateTreasureChest () {
+  
+  // --- IF STATEMENT FOR TREASURE CHEST ---
+  
+  if (clickedTreasureChest){
+    drawOpenTreasureChest (380, 0)
+  }
+  else
+  {
+    drawClosedTreasureChest (380, 5)
+  }
+  
+}
