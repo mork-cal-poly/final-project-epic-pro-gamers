@@ -31,7 +31,7 @@ clickedUmbrella = !clickedUmbrella
 else if (mouseX>27 && mouseX<100 && mouseY>250 && mouseY<290 && beachScene)
 dockScene();
 else if (mouseX>0 && mouseX<600 && mouseY>150 && mouseY<225 && beachScene)
-underwaterScene();
+underWaterScene();
 
 // underWaterScene
 
