@@ -4,6 +4,7 @@ let clickedBeachBag = false;
 let sharkFinX = -50;
 let clickedUmbrella = false;
 let arrowClicked = false;
+let oceanClicked = false;
 
 let clickedTreasureChest = false;
 
@@ -25,30 +26,31 @@ function setup() {
 
 function draw() {
 
-if (!arrowClicked) {
-  beachScene()
-}
-else {
-  underWaterScene()
-}
-
+  if (oceanClicked == false) {
+    beachScene()
+  }
+  else {
+    underWaterScene()
+  }
+console.log(clickedTreasureChest)
+console.log(oceanClicked)
+console.log(clickedBeachBag)
 }
 
 function mouseClicked(){
 
 // beachScene
 
-  if (mouseX>80 && mouseX<171 && mouseY>317 && mouseY<367 && beachScene)
+  if (mouseX>80 && mouseX<171 && mouseY>317 && mouseY<367 && oceanClicked == false && arrowClicked == false)
   clickedBucket = !clickedBucket
-else if (mouseX>250 && mouseX<392 && mouseY>248 && mouseY<302 && beachScene)
+else if (mouseX>250 && mouseX<392 && mouseY>248 && mouseY<302 && oceanClicked == false && arrowClicked == false)
 clickedBeachBag = !clickedBeachBag
-else if (mouseX>436 && mouseX<462 && mouseY>166 && mouseY<323 && beachScene)
+else if (mouseX>436 && mouseX<462 && mouseY>166 && mouseY<323 && oceanClicked == false && arrowClicked == false)
 clickedUmbrella = !clickedUmbrella
-else if (mouseX>27 && mouseX<100 && mouseY>250 && mouseY<290 && beachScene)
-dockScene();
-if (mouseX>20 && mouseX<125 && mouseY>40 && mouseY<200 && beachScene) {
-  arrowClicked = true
-}
+else if (mouseX>27 && mouseX<100 && mouseY>250 && mouseY<290 && oceanClicked == false && arrowClicked == false)
+arrowClicked = true
+if (mouseX>0 && mouseX<600 && mouseY>150 && mouseY<225 && oceanClicked == false && arrowClicked == false)
+oceanClicked = true
 
 
 
@@ -69,7 +71,7 @@ clickedFishThree = !clickedFishThree
 
 }
 
-
+//----------------beachScene FUNCTIONS-------------------------
 function drawbeachBackground(beachBackgroundX,beachBackgroundY){
   push();
    translate(beachBackgroundX,beachBackgroundY);
