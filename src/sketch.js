@@ -32,6 +32,8 @@ function draw() {
   else {
     underWaterScene()
   }
+
+  
 console.log(clickedTreasureChest)
 console.log(oceanClicked)
 console.log(clickedBeachBag)
