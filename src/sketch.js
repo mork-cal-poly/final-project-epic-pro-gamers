@@ -36,13 +36,19 @@ function draw() {
   }
   else {
     underWaterScene()
-    PierScene()
   }
 
+  if (arrowClicked == false) {
+ 
+  }
+  else {
+    PierScene()
+  }
   
 console.log(clickedTreasureChest)
 console.log(oceanClicked)
 console.log(clickedBeachBag)
+
 }
 
 function mouseClicked(){
@@ -51,11 +57,11 @@ function mouseClicked(){
 
   if (mouseX>80 && mouseX<171 && mouseY>317 && mouseY<367 && oceanClicked == false && arrowClicked == false)
   clickedBucket = !clickedBucket
-else if (mouseX>250 && mouseX<392 && mouseY>248 && mouseY<302 && oceanClicked == false && arrowClicked == false)
+if (mouseX>250 && mouseX<392 && mouseY>248 && mouseY<302 && oceanClicked == false && arrowClicked == false)
 clickedBeachBag = !clickedBeachBag
-else if (mouseX>436 && mouseX<462 && mouseY>166 && mouseY<323 && oceanClicked == false && arrowClicked == false)
+if (mouseX>436 && mouseX<462 && mouseY>166 && mouseY<323 && oceanClicked == false && arrowClicked == false)
 clickedUmbrella = !clickedUmbrella
-else if (mouseX>27 && mouseX<100 && mouseY>250 && mouseY<290 && oceanClicked == false && arrowClicked == false)
+if (mouseX>27 && mouseX<100 && mouseY>250 && mouseY<290 && oceanClicked == false && arrowClicked == false)
 arrowClicked = true
 if (mouseX>0 && mouseX<600 && mouseY>150 && mouseY<225 && oceanClicked == false && arrowClicked == false)
 oceanClicked = true
@@ -65,19 +71,46 @@ oceanClicked = true
 
 // underWaterScene
 
-if (mouseX > 475 && mouseX < 590 && mouseY > 280 && mouseY < 400)
+if (mouseX>50 && mouseX<90 && mouseY>50 && mouseY<122 && oceanClicked == true && arrowClicked == false)
+oceanClicked = false
+if (mouseX > 475 && mouseX < 590 && mouseY > 280 && mouseY < 400 && oceanClicked == true && arrowClicked == false)
 clickedTreasureChest = !clickedTreasureChest;      
 
-if (mouseX > 100 && mouseX < 280 && mouseY > 60 && mouseY < 180)
+if (mouseX > 100 && mouseX < 280 && mouseY > 60 && mouseY < 180 && oceanClicked == true && arrowClicked == false)
 clickedFishOne = !clickedFishOne
 
-if (mouseX > 250 && mouseX < 360 && mouseY > 210 && mouseY < 280)
+if (mouseX > 250 && mouseX < 360 && mouseY > 210 && mouseY < 280 && oceanClicked == true && arrowClicked == false)
 clickedFishTwo = !clickedFishTwo
 
-if (mouseX > 420 && mouseX < 555 && mouseY > 60 && mouseY < 180)
+if (mouseX > 420 && mouseX < 555 && mouseY > 60 && mouseY < 180 && oceanClicked == true && arrowClicked == false)
 clickedFishThree = !clickedFishThree
 
+
+// PierScene
+if (mouseX > 480 && mouseX<550 && mouseY>200 && mouseY<240 && oceanClicked == false && arrowClicked == true)
+arrowClicked = false
+
+  let crabDistance = dist(mouseX, mouseY, crabX + 200, 400 - 65);
+
+  if (crabDistance < 12.5) { 
+    crabX += 15;
+  }
+
+  let sunDistance = dist(mouseX, mouseY, 200 + 325, 400 - 325);
+  if (sunDistance < 40) {
+    if (sunCol1 == 255) {
+      sunCol1 = 128;
+      sunCol2 = 128;
+      sunCol3 = 128;
+    } else {
+      sunCol1 = 255;
+      sunCol2 = 191;
+      sunCol3 = 74;
+    }
+
+  }
 }
+
 
 //----------------beachScene FUNCTIONS-------------------------
 function drawbeachBackground(beachBackgroundX,beachBackgroundY){
@@ -297,9 +330,10 @@ function drawbeachUmbrellaClosed(beachUmbrellaClosedX,beachUmbrellaClosedY){
   pop();
 }
 
-function drawArrow(ArrowX,ArrowY){
+function drawArrow(ArrowX,ArrowY,ArrowR){
   push();
   translate(ArrowX,ArrowY);
+  rotate(ArrowR)
   fill(255,0,0);
   noStroke();
   rect(-30,-30,50,20);
@@ -631,17 +665,24 @@ function underWaterScene (){
   changeStateTreasureChest ()
   
   printFish()
+
+  drawArrow(50,100,PI/2)
   
 }
 
+// ---------- PIER SCENE -----------------------
 function PierScene() {
+  push();
   translate(200, 400);
+  background(220,240,250);
   drawBackground();
   drawPier();
   drawCrab();
   drawClouds();
   drawSun();
   drawBucket();
+  pop();
+  drawArrow(500,200,PI)
 }
 
 function drawBackground() {
@@ -692,6 +733,7 @@ function drawPier() {
 }
 
 function drawCrab() {
+  push();
   fill(255, 0, 0);
   noStroke();
   ellipse(crabX, -65, 25, 15);
@@ -705,9 +747,11 @@ function drawCrab() {
   line(crabX + 18, -72, crabX + 25, -65);
   line(crabX + 18, -64, crabX + 8, -62);
   line(crabX + 18, -64, crabX + 25, -58);
+  pop();
 }
 
 function drawClouds() {
+  push();
   fill(255);
   noStroke();
   arc(-100, -300, 150, 100, PI, 0);
@@ -716,6 +760,7 @@ function drawClouds() {
   arc(150, -300, 150, 100, PI, 0);
   arc(75, -300, 60, 60, PI, 0);
   arc(225, -300, 60, 60, PI, 0);
+  pop();
 }
 
 function drawBucket() {
@@ -726,28 +771,7 @@ function drawBucket() {
   fill(245, 213, 161)
   stroke(0,200,0)
   arc(-10,-50,25,30,PI,0 )
+  pop();
 }
 
-function mouseClicked() {
-
-  let crabDistance = dist(mouseX, mouseY, crabX + 200, 400 - 65);
-
-  if (crabDistance < 12.5) { 
-    crabX += 15;
-  }
-
-  let sunDistance = dist(mouseX, mouseY, 200 + 325, 400 - 325);
-  if (sunDistance < 40) {
-    if (sunCol1 == 255) {
-      sunCol1 = 128;
-      sunCol2 = 128;
-      sunCol3 = 128;
-    } else {
-      sunCol1 = 255;
-      sunCol2 = 191;
-      sunCol3 = 74;
-    }
-
-  }
-}
 
