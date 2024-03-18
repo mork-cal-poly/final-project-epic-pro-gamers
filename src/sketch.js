@@ -612,16 +612,6 @@ function printFish () {
   
 }
 
-function drawArrowUnderWater(ArrowUnderWaterX,ArrowUnderWaterY){
-  push();
-  translate(ArrowUnderWaterX,ArrowUnderWaterY);
-  fill(255,0,0);
-  noStroke();
-  rect(50, 300,50,20);
-  triangle(50,340,50,280,30,310)
-  pop();
-}
-
 function underWaterScene (){
   
   drawBlueBackground (0, 0)
