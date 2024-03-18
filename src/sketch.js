@@ -3,6 +3,19 @@ let clickedBucket = false;
 let clickedBeachBag = false;
 let sharkFinX = -50;
 let clickedUmbrella = false;
+let arrowClicked = false;
+
+let clickedTreasureChest = false;
+
+let clickedFishOne = false;
+let xPositionFishOne = 200
+
+let clickedFishTwo = false;
+let xPositionFishTwo = 300
+let yPositionFishTwo = 280
+
+let clickedFishThree = false;
+let rotateFish = 0
 
 function setup() {
   // For ordering nodes in the DOM
@@ -12,11 +25,19 @@ function setup() {
 
 function draw() {
 
-beachScene();
+if (!arrowClicked) {
+  beachScene()
+}
+else {
+  underWaterScene()
+}
 
 }
 
 function mouseClicked(){
+
+// beachScene
+
   if (mouseX>80 && mouseX<171 && mouseY>317 && mouseY<367 && beachScene)
   clickedBucket = !clickedBucket
 else if (mouseX>250 && mouseX<392 && mouseY>248 && mouseY<302 && beachScene)
@@ -25,8 +46,27 @@ else if (mouseX>436 && mouseX<462 && mouseY>166 && mouseY<323 && beachScene)
 clickedUmbrella = !clickedUmbrella
 else if (mouseX>27 && mouseX<100 && mouseY>250 && mouseY<290 && beachScene)
 dockScene();
-else if (mouseX>0 && mouseX<600 && mouseY>150 && mouseY<225 && beachScene)
-underwaterScene();
+if (mouseX>20 && mouseX<125 && mouseY>40 && mouseY<200 && beachScene) {
+  arrowClicked = true
+}
+
+
+
+
+// underWaterScene
+
+if (mouseX > 475 && mouseX < 590 && mouseY > 280 && mouseY < 400)
+clickedTreasureChest = !clickedTreasureChest;      
+
+if (mouseX > 100 && mouseX < 280 && mouseY > 60 && mouseY < 180)
+clickedFishOne = !clickedFishOne
+
+if (mouseX > 250 && mouseX < 360 && mouseY > 210 && mouseY < 280)
+clickedFishTwo = !clickedFishTwo
+
+if (mouseX > 420 && mouseX < 555 && mouseY > 60 && mouseY < 180)
+clickedFishThree = !clickedFishThree
+
 }
 
 
@@ -311,3 +351,275 @@ drawArrow(80,290);
 
 }
 
+// --- underWaterScene code ---
+
+function drawBlueBackground (x, y) {
+ 
+  push()
+  translate(x, y)
+  
+  let r = 173
+  let g = 216
+  let b = 230
+  
+  for(y=0; y<=height; y+=1) {
+  fill(r, g, b)
+  noStroke()
+  rect(0, y, width, 1)
+  
+  r = r - 173 / (height/1)
+  g = g - 216 / (height/1)
+  b = b + 9 / (height/1)
+  } 
+ 
+  pop()   
+    
+}
+
+function drawBubbles (x, y, scaleBubbles) {
+  
+  push()
+  
+  translate(x, y)
+  scale(scaleBubbles)
+  
+  fill(255, 255, 255, 50)
+  noStroke()
+  ellipse(0, 0, 30)
+  
+  pop()
+  
+}
+
+function drawClosedTreasureChest (x, y) {
+  
+  push()
+  translate(x, y)
+  
+  fill(92, 64, 51)
+  strokeWeight(10)
+  stroke(255,215,0)
+  rect(100, 320, 100, 70)
+  
+  fill(92, 64, 51)
+  strokeWeight(10)
+  stroke(255,215,0) 
+  arc(150, 320, 100, 70, PI, 2*PI)
+  
+  fill(255,215,0)
+  rect(145, 315, 10, 20)
+  
+  pop()
+  
+}
+
+function drawOpenTreasureChest (x, y) {
+  
+  push()
+  translate(x, y)
+  
+  fill(92, 64, 51)
+  strokeWeight(10)
+  stroke(255,215,0)
+  rect(100, 325, 100, 70)
+  
+  fill(92, 64, 51)
+  strokeWeight(10)
+  stroke(255,215,0) 
+  arc(150, 280, 100, 70, 2*PI, PI)
+  
+  fill(255,215,0)
+  rect(145, 315, 10, 20)
+  
+  fill(255, 255, 0)
+  strokeWeight(3)
+  stroke(255, 215, 0)
+  ellipse(50, 390, 15)
+  
+  fill(255, 255, 0)
+  strokeWeight(3)
+  stroke(255, 215, 0)
+  ellipse(60, 390, 15) 
+  
+  fill(255, 255, 0)
+  strokeWeight(3)
+  stroke(255, 215, 0)
+  ellipse(80, 390, 15)
+  
+  fill(255, 255, 0)
+  strokeWeight(3)
+  stroke(255, 215, 0)
+  ellipse(100, 390, 15)
+  
+  fill(255, 255, 0)
+  strokeWeight(3)
+  stroke(255, 215, 0)
+  ellipse(140, 390, 15)
+  
+  fill(255, 255, 0)
+  strokeWeight(3)
+  stroke(255, 215, 0)
+  ellipse(150, 390, 15)
+  
+  fill(255, 255, 0)
+  strokeWeight(3)
+  stroke(255, 215, 0)
+  ellipse(170, 390, 15)
+  
+  fill(255, 255, 0)
+  strokeWeight(3)
+  stroke(255, 215, 0)
+  ellipse(200, 390, 15)
+  
+  pop()
+  
+}
+
+function drawFish (x, y, scaleFish, rotateFish) {
+  
+  push();
+  translate(x, y);
+  scale(scaleFish)
+  rotate(rotateFish)
+  
+// Back Fin
+  
+  fill(240, 227, 0)
+  noStroke()
+  triangle(-175, -150, -100, -100, -175, -50)
+  
+// Stripe on Back Fin
+  
+  fill(0, 89, 240)
+  rect(-175, -105, 70, 10)
+ 
+// Bottom Right Fin
+  
+  fill(240, 138, 67)
+  triangle(0, -70, 100, -70, 0, 0)
+  
+// Bottom Left Fin
+  
+  fill(240, 198, 0)
+  triangle(-115, -100, 0, -40, -65, -7)
+  
+// Top Right Fin
+  
+  fill(240, 158, 45)
+  triangle(70, -165, 110, -110, 0, -110)
+  
+// Top Middle Fin
+  
+  fill(240, 198, 0)
+  triangle(0, -200, 110, -110, -30, -110)
+  
+// Top Left Fin
+  
+  fill(240, 138, 67)
+  triangle(-100, -205, 80, -110, -95, -100)
+  
+// Body
+  
+  fill(156, 212, 240)
+  ellipse(0, -100, 240, 120)
+  
+// Eye
+  
+  fill(255)
+  ellipse(70, -110, 44)
+  fill(0)
+  ellipse(70, -110, 20)
+  
+// Body Fin
+  
+  fill(0, 89, 240)
+  noStroke()
+  arc(0, -100, 40, 40, 5*QUARTER_PI, PI - QUARTER_PI, PIE);
+
+   pop();
+  
+}
+
+function printBubbles () {
+  
+  // --- LOOPS FOR BUBBLES ---
+  
+  randomSeed(101)
+  
+    // Upper left corner
+  
+  for (let i=0; i < 5; i ++) {
+      drawBubbles(random(0, width/2), random(0,height/2), random(0.8, 1))
+   }
+
+// Upper right corner
+  
+   for (let i=0; i < 5; i++)  {
+      drawBubbles(random(width/2, width), random(0,height/2), random(0.8, 1))
+   }
+
+// Lower left corner
+  
+   for (let i=0; i < 5; i ++) {
+    drawBubbles(random(0,width/2),random(height/2,height), random(0.8, 1))
+   }
+
+  
+// Lower right corner
+  
+  for (let i=0; i < 10; i ++) {
+    drawBubbles(random(width/2, width), random(height/2, height), random(0.8, 1)) 
+ }
+  
+}
+
+function changeStateTreasureChest () {
+  
+  // --- IF STATEMENT FOR TREASURE CHEST ---
+  
+  if (clickedTreasureChest){
+    drawOpenTreasureChest (380, 0)
+  }
+  else
+  {
+    drawClosedTreasureChest (380, 5)
+  }
+  
+}
+
+function printFish () {
+  
+  // --- FISH ---
+  
+  drawFish (xPositionFishOne, 180, 0.5, 0)
+  
+  if (clickedFishOne) {
+    xPositionFishOne = xPositionFishOne + 1
+  }
+  
+  drawFish (xPositionFishTwo, yPositionFishTwo, 0.3, 0)
+  
+  if (clickedFishTwo) {
+    xPositionFishTwo = xPositionFishTwo + 1
+    yPositionFishTwo = yPositionFishTwo - 1
+  }
+  
+  drawFish (500, 175, 0.4, rotateFish)
+  
+  if (clickedFishThree) {
+    rotateFish = rotateFish + 0.2
+  }
+  
+}
+
+function underWaterScene (){
+  
+  drawBlueBackground (0, 0)
+  
+  printBubbles()
+  
+  changeStateTreasureChest ()
+  
+  printFish()
+  
+}
