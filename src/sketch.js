@@ -18,6 +18,11 @@ let yPositionFishTwo = 280
 let clickedFishThree = false;
 let rotateFish = 0
 
+let crabX = -100;
+let sunCol1 = 255;
+let sunCol2 = 191;
+let sunCol3 = 74;
+
 function setup() {
   // For ordering nodes in the DOM
   let myCanvas = createCanvas(600,400);
