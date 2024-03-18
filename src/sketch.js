@@ -3,6 +3,19 @@ let clickedBucket = false;
 let clickedBeachBag = false;
 let sharkFinX = -50;
 let clickedUmbrella = false;
+let arrowClicked = false;
+
+let clickedTreasureChest = false;
+
+let clickedFishOne = false;
+let xPositionFishOne = 200
+
+let clickedFishTwo = false;
+let xPositionFishTwo = 300
+let yPositionFishTwo = 280
+
+let clickedFishThree = false;
+let rotateFish = 0
 
 function setup() {
   // For ordering nodes in the DOM
@@ -12,9 +25,12 @@ function setup() {
 
 function draw() {
 
-beachScene();
-
-underWaterScene()
+if (!arrowClicked) {
+  beachScene()
+}
+else {
+  underWaterScene()
+}
 
 }
 
@@ -30,8 +46,12 @@ else if (mouseX>436 && mouseX<462 && mouseY>166 && mouseY<323 && beachScene)
 clickedUmbrella = !clickedUmbrella
 else if (mouseX>27 && mouseX<100 && mouseY>250 && mouseY<290 && beachScene)
 dockScene();
-else if (mouseX>0 && mouseX<600 && mouseY>150 && mouseY<225 && beachScene)
-underWaterScene();
+if (mouseX>20 && mouseX<125 && mouseY>40 && mouseY<200 && beachScene) {
+  arrowClicked = true
+}
+
+
+
 
 // underWaterScene
 
@@ -521,36 +541,36 @@ function drawFish (x, y, scaleFish, rotateFish) {
 }
 
 function printBubbles () {
-
-// --- LOOPS FOR BUBBLES ---
   
-randomSeed(101)
+  // --- LOOPS FOR BUBBLES ---
   
-// Upper left corner
-
-for (let i=0; i < 5; i ++) {
-  drawBubbles(random(0, width/2), random(0,height/2), random(0.8, 1))
-}
+  randomSeed(101)
+  
+    // Upper left corner
+  
+  for (let i=0; i < 5; i ++) {
+      drawBubbles(random(0, width/2), random(0,height/2), random(0.8, 1))
+   }
 
 // Upper right corner
-
-for (let i=0; i < 5; i++)  {
-  drawBubbles(random(width/2, width), random(0,height/2), random(0.8, 1))
-}
+  
+   for (let i=0; i < 5; i++)  {
+      drawBubbles(random(width/2, width), random(0,height/2), random(0.8, 1))
+   }
 
 // Lower left corner
+  
+   for (let i=0; i < 5; i ++) {
+    drawBubbles(random(0,width/2),random(height/2,height), random(0.8, 1))
+   }
 
-for (let i=0; i < 5; i ++) {
-drawBubbles(random(0,width/2),random(height/2,height), random(0.8, 1))
-}
-
-
+  
 // Lower right corner
-
-for (let i=0; i < 10; i ++) {
-drawBubbles(random(width/2, width), random(height/2, height), random(0.8, 1)) 
-}
-
+  
+  for (let i=0; i < 10; i ++) {
+    drawBubbles(random(width/2, width), random(height/2, height), random(0.8, 1)) 
+ }
+  
 }
 
 function changeStateTreasureChest () {
@@ -592,19 +612,14 @@ function printFish () {
   
 }
 
-function underWaterScene(){
- 
-  // Ocean Background
+function underWaterScene (){
+  
   drawBlueBackground (0, 0)
   
-  // Fish
-  printFish()
-  
-  // Bubbles
   printBubbles()
   
-  // Treasure Chest
   changeStateTreasureChest ()
   
-  }
+  printFish()
   
+}
